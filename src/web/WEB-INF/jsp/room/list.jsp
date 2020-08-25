@@ -26,7 +26,5 @@
         </tr>
     </c:forEach>
 </table>
-<%--<c:url var="urlUserEdit" value="/user/edit.html"/>--%>
-<%--<a href="${urlUserEdit}" class="add-button">Добавить</a>--%>
 </body>
 </html>

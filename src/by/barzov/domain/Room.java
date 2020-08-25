@@ -1,5 +1,8 @@
 package by.barzov.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
     private Long id;
     private String name;
@@ -8,6 +11,14 @@ public class Room {
 
     public Long getId() {
         return id;
+    }
+
+    public List<String> getCountries() {
+        List<String> countries = new ArrayList<>();
+        countries.add("Belarus");
+        countries.add("USA");
+        countries.add("Germany");
+        return countries;
     }
 
     public void setId(Long id) {

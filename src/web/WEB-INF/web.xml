@@ -9,6 +9,16 @@
     <display-name>Приложение комнаты</display-name>
 
     <servlet>
+        <servlet-name>RoomCreateController</servlet-name>
+        <servlet-class>by.barzov.controller.RoomCreateController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RoomCreateController</servlet-name>
+        <url-pattern>/room/create.html</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>RoomListController</servlet-name>
         <servlet-class>by.barzov.controller.RoomListController</servlet-class>
     </servlet>

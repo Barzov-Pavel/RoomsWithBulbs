@@ -16,6 +16,15 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public void create(Room room) throws ServiceException {
+        try {
+            roomDao.create(room);
+        }catch(DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public List<Room> findAll() throws ServiceException{
         try {
             return roomDao.readAll();
