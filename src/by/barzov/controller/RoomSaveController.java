@@ -22,7 +22,7 @@ public class RoomSaveController extends HttpServlet {
         try {
             room.setName(req.getParameter("name"));
             room.setCountry(req.getParameter("country"));
-            room.setLightIsOn(Boolean.parseBoolean(req.getParameter("light")));
+            room.setLightIsOn(false);
         } catch (NumberFormatException e) {
         }
         Connection connection = null;

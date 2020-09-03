@@ -16,13 +16,11 @@
     <tr>
         <th>Название комнаты</th>
         <th>Страна</th>
-        <th>Включена ли лампочка</th>
     </tr>
     <c:forEach var="room" items="${rooms}">
         <tr>
             <td class="content">${room.name}</td>
             <td class="content">${room.country}</td>
-            <td class="content">${room.lightIsOn}</td>
         </tr>
     </c:forEach>
 </table>

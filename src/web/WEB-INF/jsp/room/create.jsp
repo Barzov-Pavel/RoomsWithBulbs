@@ -35,8 +35,6 @@
             <option value="${country}" ${selected}>${country}</option>
         </c:forEach>
     </select>
-    <label for="light">Включена ли лампочка:</label>
-    <input id="light" name="light" value="${room.lightIsON}">
     <button class="save">Сохранить</button>
 </form>
 </body>
