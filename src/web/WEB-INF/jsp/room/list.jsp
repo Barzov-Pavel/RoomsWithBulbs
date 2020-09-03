@@ -1,6 +1,6 @@
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,14 @@
     </tr>
     <c:forEach var="room" items="${rooms}">
         <tr>
-            <td class="content">${room.name}</td>
+            <td class="content">
+                <c:url var="urlRoomEdit" value="//room/room.html">
+                    <c:param name="id" value="${room.id}"/>
+                    <c:param name="name" value="${room.name}"/>
+                    <c:param name="country" value="${room.country}"/>
+                    <c:param name="light" value="${room.lightIsOn}"/>
+                </c:url>
+                <a href="${urlRoomEdit}"/> ${room.name}</td>
             <td class="content">${room.country}</td>
         </tr>
     </c:forEach>

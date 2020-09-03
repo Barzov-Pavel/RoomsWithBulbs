@@ -38,6 +38,16 @@
         <url-pattern>/room/save.html</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ShowRoomController</servlet-name>
+        <servlet-class>by.barzov.controller.ShowRoomController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShowRoomController</servlet-name>
+        <url-pattern>/room/room.html</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
