@@ -17,14 +17,5 @@ public class RoomCreateController extends HttpServlet {
         List<String> countries = room.getCountries();
         req.setAttribute("countries", countries);
         req.getRequestDispatcher("/WEB-INF/jsp/room/create.jsp").forward(req, resp);
-//        try {
-//            RoomServiceImpl service = new RoomServiceImpl();
-//            Room room = new Room();
-//            List<String> countries = room.getCountries();
-//            req.setAttribute("countries", countries);
-//            req.getRequestDispatcher("/WEB-INF/jsp/room/create.jsp").forward(req, resp);
-//        } catch (RuntimeException e) {
-//            throw new ServletException(e);
-//        }
     }
 }

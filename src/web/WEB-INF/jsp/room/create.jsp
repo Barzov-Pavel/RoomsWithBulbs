@@ -14,8 +14,8 @@
 <h1>Приложение комнаты</h1>
 <h2>Создание новой комнаты</h2>
 
-<c:url var="urlUserCreate" value="//room/save.html"/>
-<form action="${urlUserCreate}" method="post">
+<c:url var="urlRoomCreate" value="//room/save.html"/>
+<form action="${urlRoomCreate}" method="post">
     <c:if test="${not empty room.id}">
         <input name="id" value="${room.id}" type="hidden">
     </c:if>
@@ -36,7 +36,7 @@
         </c:forEach>
     </select>
     <label for="light">Включена ли лампочка:</label>
-    <input id="light" name="lightIsOn" value="${room.lightIsON}">
+    <input id="light" name="light" value="${room.lightIsON}">
     <button class="save">Сохранить</button>
 </form>
 </body>

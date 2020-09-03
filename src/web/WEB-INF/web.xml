@@ -28,6 +28,16 @@
         <url-pattern>/room/list.html</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>RoomSaveController</servlet-name>
+        <servlet-class>by.barzov.controller.RoomSaveController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RoomSaveController</servlet-name>
+        <url-pattern>/room/save.html</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
