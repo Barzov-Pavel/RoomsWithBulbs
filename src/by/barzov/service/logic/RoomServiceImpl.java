@@ -19,16 +19,25 @@ public class RoomServiceImpl implements RoomService {
     public void create(Room room) throws ServiceException {
         try {
             roomDao.create(room);
-        }catch(DaoException e) {
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @Override
-    public List<Room> findAll() throws ServiceException{
+    public void onLight(Room room) throws ServiceException {
+        try {
+            roomDao.update(room);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Room> findAll() throws ServiceException {
         try {
             return roomDao.readAll();
-        }catch (DaoException e) {
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
