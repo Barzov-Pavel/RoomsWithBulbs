@@ -35,8 +35,9 @@ public class OnLightController extends HttpServlet {
             RoomServiceImpl service = new RoomServiceImpl();
             service.setRoomDao(dao);
             service.onLight(room);
-            req.setAttribute("room", room);
-            req.getRequestDispatcher("/WEB-INF/jsp/room/room.jsp").forward(req, resp);
+//            req.setAttribute("room", room);
+//            req.getRequestDispatcher("/WEB-INF/jsp/room/room.jsp").forward(req, resp);
+            resp.sendRedirect(req.getContextPath() + "/room/room.html?id="+room.getId());
         } catch (SQLException | ServiceException e) {
             throw new ServletException(e);
         } finally {
@@ -46,4 +47,5 @@ public class OnLightController extends HttpServlet {
             }
         }
     }
+
 }
