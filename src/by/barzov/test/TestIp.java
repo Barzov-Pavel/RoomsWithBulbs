@@ -1,23 +1,27 @@
-package by.barzov.domain;
+package by.barzov.test;
+
+import com.maxmind.geoip2.DatabaseReader;
+import com.maxmind.geoip2.exception.GeoIp2Exception;
+import com.maxmind.geoip2.model.CountryResponse;
+import com.maxmind.geoip2.record.RepresentedCountry;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room {
-    private String ip;
-    private Long id;
-    private String name;
-    private String country;
-    private Boolean lightIsOn;
+public class TestIp {
 
-    public Long getId() {
-        return id;
-    }
 
-    public List<String> getCountries() {
+    public static void main(String[] args) throws IOException, GeoIp2Exception {
+        File database = new File("E:\\проекты\\RoomsWithBulbs\\src\\web\\WEB-INF\\lib\\GeoLite2-Country.mmdb");
+        DatabaseReader dbReader = new DatabaseReader.Builder(database).build();
+        InetAddress ip = InetAddress.getByName("0:0:0:0:0:0:0:1");
+        CountryResponse response = dbReader.country(ip);
+
         String csvFile = "E:\\проекты\\RoomsWithBulbs\\src\\web\\WEB-INF\\lib\\GeoLite2-Country-Locations-en.csv";
         String line = "";
         String cvsSplitBy = ",";
@@ -36,6 +40,14 @@ public class Room {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        countries.removeIf(x -> x.isBlank());
+        countries.sort((x, y) -> x.compareTo(y));
+
+        System.out.println(countries.get(0));
+
+        String str = countries.get(0).replace("\"", "");
+        System.out.println(str);
+
         for (int i = 0; i < countries.size(); i++) {
             String string = null;
             String old = countries.get(0);
@@ -45,42 +57,13 @@ public class Room {
         }
         countries.remove("country_name");
         countries.sort((x, y) -> x.compareTo(y));
-        return countries;
+
+
+        //String countryName = response.getCountry().getName();
+
+
+        System.out.println(countries);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public Boolean getLightIsOn() {
-        return lightIsOn;
-    }
-
-    public void setLightIsOn(Boolean lightIsOn) {
-        this.lightIsOn = lightIsOn;
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
 }
