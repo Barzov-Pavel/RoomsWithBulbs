@@ -18,12 +18,23 @@ import java.util.List;
 public class ShowRoomController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Room room = new Room();
-        room.setId(Long.parseLong(req.getParameter("id")));
-        room.setName(req.getParameter("name"));
-        room.setCountry(req.getParameter("country"));
-        room.setLightIsOn(Boolean.parseBoolean(req.getParameter("light")));
-        req.setAttribute("room", room);
-        req.getRequestDispatcher("/WEB-INF/jsp/room/room.jsp").forward(req, resp);
+        Connection connection = null;
+        try {
+            connection = Connector.getConnection();
+            RoomDaoImpl dao = new RoomDaoImpl();
+            dao.setConnection(connection);
+            RoomServiceImpl service = new RoomServiceImpl();
+            service.setRoomDao(dao);
+            Room room = service.readRoomById(Long.parseLong(req.getParameter("id")));
+            req.setAttribute("room", room);
+            req.getRequestDispatcher("/WEB-INF/jsp/room/room.jsp").forward(req, resp);
+        } catch (SQLException | ServiceException e) {
+            throw new ServletException(e);
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+            }
+        }
     }
 }

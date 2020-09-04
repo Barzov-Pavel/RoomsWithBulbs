@@ -25,6 +25,15 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public Room readRoomById(Long id) throws ServiceException {
+        try {
+            return roomDao.read(id);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void onLight(Room room) throws ServiceException {
         try {
             roomDao.update(room);
