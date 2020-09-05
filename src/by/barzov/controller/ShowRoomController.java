@@ -40,8 +40,10 @@ public class ShowRoomController extends HttpServlet {
                 req.getRequestDispatcher("/WEB-INF/jsp/room/room.jsp").forward(req, resp);
             } else if (room.getIp().equals("0:0:0:0:0:0:0:1") || room.getIp().equals("127.0.0.1")) {
                 req.getRequestDispatcher("/WEB-INF/jsp/room/room.jsp").forward(req, resp);
-            } else {
-                resp.sendRedirect(req.getContextPath() + "/room/exception.html)");
+            }
+            else {
+                //resp.sendRedirect(req.getContextPath() + "/room/exception.html)");
+                req.getRequestDispatcher("/WEB-INF/jsp/room/exception.jsp").forward(req, resp);
             }
 
         } catch (SQLException | ServiceException e) {

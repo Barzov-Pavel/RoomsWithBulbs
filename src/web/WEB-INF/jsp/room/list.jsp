@@ -11,6 +11,7 @@
     <link href="${urlCss}" rel="stylesheet">
 </head>
 <body>
+<a href="/rooms/index.html">Главная страница</a>
 <h1>Список комнат</h1>
 <table>
     <tr>

@@ -58,6 +58,16 @@
         <url-pattern>/room/light-on.html</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ExceptionController</servlet-name>
+        <servlet-class>by.barzov.controller.ExceptionController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ExceptionController</servlet-name>
+        <url-pattern>/room/exception.html</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
