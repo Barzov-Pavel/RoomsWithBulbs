@@ -17,6 +17,7 @@ import java.sql.SQLException;
 public class RoomSaveController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         Room room = new Room();
 
         try {

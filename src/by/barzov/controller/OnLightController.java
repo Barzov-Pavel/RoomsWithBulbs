@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 public class OnLightController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         Room room = new Room();
         room.setId(Long.parseLong(req.getParameter("id")));
         room.setName(req.getParameter("name"));
@@ -35,7 +35,7 @@ public class OnLightController extends HttpServlet {
             RoomServiceImpl service = new RoomServiceImpl();
             service.setRoomDao(dao);
             service.onLight(room);
-            resp.sendRedirect(req.getContextPath() + "/room/room.html?id="+room.getId());
+            resp.sendRedirect(req.getContextPath() + "/room/room.html?id=" + room.getId());
         } catch (SQLException | ServiceException e) {
             throw new ServletException(e);
         } finally {

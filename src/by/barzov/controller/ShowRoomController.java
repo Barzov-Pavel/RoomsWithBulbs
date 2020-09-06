@@ -8,7 +8,6 @@ import by.barzov.util.Connector;
 import com.maxmind.geoip2.DatabaseReader;
 import com.maxmind.geoip2.exception.GeoIp2Exception;
 import com.maxmind.geoip2.model.CountryResponse;
-import com.maxmind.geoip2.record.Country;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,15 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
 
 public class ShowRoomController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        req.setCharacterEncoding("UTF-8");
         Connection connection = null;
         try {
             connection = Connector.getConnection();
@@ -75,7 +72,7 @@ public class ShowRoomController extends HttpServlet {
             InetAddress ip = InetAddress.getByName(room.getIp());
             CountryResponse response = dbReader.country(ip);
             String countryName = response.getCountry().getName();
-            if (countryName.equals(room.getCountry())) {
+            if (countryName.contains(room.getCountry())) {
                 return true;
             } else return false;
         } catch (IOException e) {

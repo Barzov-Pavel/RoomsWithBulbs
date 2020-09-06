@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" HTTP-EQUIV="Refresh" CONTENT="10">
+    <meta charset="UTF-8" HTTP-EQUIV="Refresh" CONTENT="5">
     <title>Комната</title>
     <c:url var="urlCss" value="//main.css"/>
     <link href="${urlCss}" rel="stylesheet">
@@ -17,8 +17,10 @@
     </c:url>
 </head>
 <body>
+
 <a href="/rooms/index.html">Главная страница</a>
 <h1>Комната ${room.name}</h1>
+
 <form action="${urlLightOnOff}" method="post">
     ${room.lightIsOn ? "Лампочка включена" : "Лампочка выключена"}
 

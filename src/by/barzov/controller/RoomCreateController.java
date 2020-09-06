@@ -1,7 +1,6 @@
 package by.barzov.controller;
 
 import by.barzov.domain.Room;
-import by.barzov.service.logic.RoomServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +12,7 @@ import java.util.List;
 public class RoomCreateController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         Room room = new Room();
         List<String> countries = room.getCountries();
         req.setAttribute("countries", countries);

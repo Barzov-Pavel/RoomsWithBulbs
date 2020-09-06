@@ -21,7 +21,7 @@ public class RoomListController extends HttpServlet {
     public void init() throws ServletException {
         try {
             Connector.init("com.mysql.jdbc.Driver",
-                    "jdbc:mysql://localhost:3306/rooms_with_bulbs", "root", "");
+                    "jdbc:mysql://localhost:3306/rooms_with_bulbs?useUnicode=true&amp;characterEncoding=utf8", "root", "");
         } catch (ClassNotFoundException e) {
             throw new ServletException(e);
         }
@@ -29,6 +29,7 @@ public class RoomListController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         Connection connection = null;
         try {
             connection = Connector.getConnection();
